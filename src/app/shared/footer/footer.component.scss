@@ -1,0 +1,93 @@
+.mLink {
+    min-width: 150px;
+    color: #303030; 
+    padding-left: 0px; 
+    font-size: 12px;
+    display: block;
+}
+
+.mLinkOther {
+    min-width: 150px;
+    color: #303030; 
+    padding-left: 0px; 
+    font-size: small;
+}
+
+.mLinkEmail {
+    min-width: 150px;
+    color: #303030; 
+    padding-left: 0px; 
+    font-size: small;
+}
+
+.mLinkEmail:hover {
+    color: #1c6c42; 
+    font-weight: 600;
+}
+
+.mLinkHeading {
+    min-width: 150px;
+    color: #303030; 
+    padding-left: 0px; 
+    font-size: 12px;
+    font-weight:600;
+}
+
+.mLink:hover {
+    color: #1c6c42; 
+    font-weight: 600;
+}
+
+.mLinkOther:hover {
+    color: #1c6c42; 
+    font-weight: 600;
+}
+
+.mLinkEnquiry {
+    padding: 25px;
+    text-align: center;
+    border-top: 2px #f0f0f0 solid;
+    border-bottom: 2px #f0f0f0 solid;
+    font-size: 12px;
+}
+
+.mLogo{
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+.mBreadcrumb {
+    margin-top: 100px;
+    padding: 175px 25px 25px 25px;
+    border-top: 0px #F8F8F8 solid;
+    text-transform: capitalize;
+    max-width: 1200px;
+    margin:auto;
+    vertical-align:middle;
+}
+
+hr {
+    width: 30px; 
+    height: 3px; background-color: green; float: left;
+}
+
+ion-icon {
+    vertical-align: middle;
+}
+
+
+@media (max-width: 576px) {
+    .mLinkEnquiry {
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0; 
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+
+    .mFooterSec {
+        padding-top:50px
+    }
+}

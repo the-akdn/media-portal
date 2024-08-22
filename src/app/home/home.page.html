@@ -1,0 +1,58 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+
+  <div style="padding: 50px; max-width: 1200px; margin: auto;">
+
+    <div class="mArticle" *ngIf="homePage()">
+      <img [src]="homePage().photo.data.attributes.url" >
+      <div class="mTitle">{{ homePage().title }}</div>
+      <hr>
+      <div class="mDesc" [innerHtml]="homePage().description | markedToHtml"></div>
+
+      <div style="padding-top: 20px;">
+        <span *ngFor="let pageButton of pageButtons">
+          <button routerLink="{{pageButton.attributes.path}}" class="mButton">{{pageButton.attributes.title}} <ion-icon name="arrow-forward-outline"></ion-icon></button>
+        </span>
+      </div>
+    </div>
+
+    <div class="mPost">
+      <div class="mTitle">{{staticText.pressReleaseTitle}}</div>
+      <hr>
+      <ion-list lines="full">
+        <ion-item *ngFor="let post of pressReleases">
+          <label>
+            <span style="margin: 0px 25px 0px 0px;">{{ post.attributes.releaseDate | date:'dd MMM yyyy'  }} </span><span style="display: inline-block;padding-top:15px;padding-bottom: 15px;">
+            <ion-text *ngIf="post.attributes.pdfFile.data.attributes.url"> 
+              <a class="mLink" [href]="post.attributes.pdfFile.data.attributes.url" target="_blank" download >
+                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+                  <g clip-path="url(#clip0_369_7967)"><path d="M17.8438 12.375C17.8438 12.4993 17.7944 12.6185 17.7065 12.7065C17.6185 12.7944 17.4993 12.8438 17.375 12.8438H15.3438V14.4062H16.75C16.8743 14.4062 16.9935 14.4556 17.0815 14.5435C17.1694 14.6315 17.2188 14.7507 17.2188 14.875C17.2188 14.9993 17.1694 15.1185 17.0815 15.2065C16.9935 15.2944 16.8743 15.3438 16.75 15.3438H15.3438V16.75C15.3438 16.8743 15.2944 16.9935 15.2065 17.0815C15.1185 17.1694 14.9993 17.2188 14.875 17.2188C14.7507 17.2188 14.6315 17.1694 14.5435 17.0815C14.4556 16.9935 14.4062 16.8743 14.4062 16.75V12.375C14.4062 12.2507 14.4556 12.1315 14.5435 12.0435C14.6315 11.9556 14.7507 11.9062 14.875 11.9062H17.375C17.4993 11.9062 17.6185 11.9556 17.7065 12.0435C17.7944 12.1315 17.8438 12.2507 17.8438 12.375ZM7.53125 13.9375C7.53125 14.4762 7.31724 14.9929 6.93631 15.3738C6.55538 15.7547 6.03872 15.9688 5.5 15.9688H4.71875V16.75C4.71875 16.8743 4.66936 16.9935 4.58146 17.0815C4.49355 17.1694 4.37432 17.2188 4.25 17.2188C4.12568 17.2188 4.00645 17.1694 3.91854 17.0815C3.83064 16.9935 3.78125 16.8743 3.78125 16.75V12.375C3.78125 12.2507 3.83064 12.1315 3.91854 12.0435C4.00645 11.9556 4.12568 11.9062 4.25 11.9062H5.5C6.03872 11.9062 6.55538 12.1203 6.93631 12.5012C7.31724 12.8821 7.53125 13.3988 7.53125 13.9375ZM6.59375 13.9375C6.59375 13.6474 6.47852 13.3692 6.2734 13.1641C6.06828 12.959 5.79008 12.8438 5.5 12.8438H4.71875V15.0312H5.5C5.79008 15.0312 6.06828 14.916 6.2734 14.7109C6.47852 14.5058 6.59375 14.2276 6.59375 13.9375ZM13.1562 14.5625C13.1562 15.267 12.8764 15.9426 12.3783 16.4408C11.8801 16.9389 11.2045 17.2188 10.5 17.2188H9.25C9.12568 17.2188 9.00645 17.1694 8.91854 17.0815C8.83064 16.9935 8.78125 16.8743 8.78125 16.75V12.375C8.78125 12.2507 8.83064 12.1315 8.91854 12.0435C9.00645 11.9556 9.12568 11.9062 9.25 11.9062H10.5C11.2045 11.9062 11.8801 12.1861 12.3783 12.6842C12.8764 13.1824 13.1562 13.858 13.1562 14.5625ZM12.2188 14.5625C12.2188 14.1067 12.0377 13.6695 11.7153 13.3472C11.393 13.0248 10.9558 12.8438 10.5 12.8438H9.71875V16.2812H10.5C10.9558 16.2812 11.393 16.1002 11.7153 15.7778C12.0377 15.4555 12.2188 15.0183 12.2188 14.5625ZM3.78125 9.25V3.625C3.78125 3.33492 3.89648 3.05672 4.1016 2.8516C4.30672 2.64648 4.58492 2.53125 4.875 2.53125H12.375C12.4367 2.5312 12.4977 2.54332 12.5547 2.56692C12.6117 2.59051 12.6635 2.62512 12.707 2.66875L17.082 7.04375C17.1697 7.1317 17.2188 7.25083 17.2188 7.375V9.25C17.2188 9.37432 17.1694 9.49355 17.0815 9.58146C16.9935 9.66936 16.8743 9.71875 16.75 9.71875C16.6257 9.71875 16.5065 9.66936 16.4185 9.58146C16.3306 9.49355 16.2812 9.37432 16.2812 9.25V7.84375H12.375C12.2507 7.84375 12.1315 7.79436 12.0435 7.70646C11.9556 7.61855 11.9062 7.49932 11.9062 7.375V3.46875H4.875C4.83356 3.46875 4.79382 3.48521 4.76451 3.51451C4.73521 3.54382 4.71875 3.58356 4.71875 3.625V9.25C4.71875 9.37432 4.66936 9.49355 4.58146 9.58146C4.49355 9.66936 4.37432 9.71875 4.25 9.71875C4.12568 9.71875 4.00645 9.66936 3.91854 9.58146C3.83064 9.49355 3.78125 9.37432 3.78125 9.25ZM12.8438 6.90625H15.6188L12.8438 4.13125V6.90625Z" fill="#4F4F4F"/></g>
+                  <defs><clipPath id="clip0_369_7967"><rect width="20" height="20" fill="white" transform="translate(0.5 0.5)"/></clipPath></defs>
+                  </svg>
+                {{ post.attributes.title }} 
+              </a>
+              </ion-text></span>
+          </label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="mPost" style="padding-bottom: 150px;">
+      <div class="mTitle">{{staticText.mediaKitTitle}}</div>
+      <hr>
+      <div lines="full" *ngFor="let media of mediaBlocks">
+        <ion-item *ngIf="media.attributes.title!='Global'">
+          <ion-label>
+            <h1 class="mCountry">{{ media.attributes.title }}</h1>
+            <a *ngIf="media?.attributes?.pdfFile?.data?.attributes?.url" class="mLink mLinkBlock" [href]="media?.attributes?.pdfFile?.data?.attributes?.url" target="_blank" download="pdfFile"> {{staticText.downloadPDFBtn}} </a>
+            <a *ngIf="media?.attributes?.photographs[0]" class="mLink mLinkBlock" href="javascript:void(0);" routerLink="/photographs/{{media?.attributes?.country?.data?.attributes?.country}}" > {{staticText.photographBtn}} </a>
+            <a class="mLink mLinkBlock" href="javascript:void(0);" routerLink="/broll"> {{staticText.brollBtn}} </a>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+   
+  </div>
+  <app-footer></app-footer>
+</ion-content>

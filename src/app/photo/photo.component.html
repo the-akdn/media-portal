@@ -1,0 +1,22 @@
+<div style="height: 100%;">
+  <div class="mSlider" style="padding: 0px 0px; height: 100%;">
+    <swiper-container class="mySwiper" slides-per-view="1" navigation="true" loop="true">
+      <swiper-slide *ngFor="let photoSlide of data; let i = index" style="display: flex;">
+        <!-- <img [src]="photoSlide.photo" style="height: 100px;" (click)="openImage(i)"> -->
+        <img [src]="photoSlide.photo" style="object-fit:cover; float: left; margin-right: 30px; max-height: 100%; max-width: 70%;">
+        <div style="padding: 30px;">{{data[id].description}}
+          <p *ngIf="data[id].photoBy">Photo: {{data[id].photoBy}}</p>
+          <hr style="background-color: #c8c8c8;">
+          <span style="margin-bottom: 10px;">{{staticText.photoDonloadTitle}}</span>
+          <div class="mLink" *ngIf="data[id].jpgFormat"><ion-icon name="download-outline" style="color: #1c6c42;"></ion-icon> {{staticText.photoJPG}} ({{data[id].jpgFormatSize/1024 | number:'1.2-2'}} MB)</div>
+          <div class="mLink" *ngIf="data[id].pngFormat"><ion-icon name="download-outline" style="color: #1c6c42;"></ion-icon> {{staticText.photoPNG}} ({{data[id].pngFormatSize/1024 | number:'1.2-2'}} MB)</div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>
+
+<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16.4439 16.4439L1.55664 1.55664M16.4439 1.55664L1.55664 16.4439" stroke="#B9B9B9" stroke-width="1.57143" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+  

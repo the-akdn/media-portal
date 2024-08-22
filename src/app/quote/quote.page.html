@@ -1,0 +1,67 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true"> 
+
+  <div style="padding: 50px; max-width: 1200px; margin: auto;">
+    <div class="mArticle" *ngIf="page()">
+      <div class="mTitle">{{ page().title }}</div>
+      <hr>   
+      <div class="mDesc"><p style="border-bottom: 1px #E0E0E0 solid;padding-bottom: 25px;">{{ page().description }}</p>
+        <div lines="full" *ngFor="let quote of quoteBlocks" style="padding-bottom: 50px;">
+          <div *ngIf="quote.attributes.Title" style="border-bottom: 1px #E0E0E0 solid;padding-bottom: 25px;">
+            <div style="width: 61px; height: 64px; position: relative">
+              <svg width="61" height="64" viewBox="0 0 61 64" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_443_9995)">
+                  <path d="M11.4646 29.421C9.93855 29.4247 8.43939 29.7676 7.11207 30.4166C8.9813 26.2468 12.0815 22.57 16.1059 19.7499C16.3362 19.5865 16.5269 19.3856 16.667 19.1587C16.8072 18.9318 16.8941 18.6833 16.9229 18.4274C16.9516 18.1715 16.9216 17.9133 16.8345 17.6674C16.7474 17.4215 16.605 17.1928 16.4154 16.9944C16.2257 16.7959 15.9926 16.6316 15.7293 16.5108C15.466 16.39 15.1777 16.3151 14.8808 16.2904C14.5839 16.2656 14.2842 16.2915 13.9989 16.3665C13.7136 16.4416 13.4483 16.5643 13.218 16.7277C4.96674 22.5055 1.29492 30.5055 1.29492 35.4655C1.30914 37.2193 1.91556 38.9315 3.04015 40.3932C4.16473 41.8549 5.75882 43.0027 7.62777 43.6966C8.83733 44.2016 10.1619 44.4688 11.5059 44.4788C12.6888 44.5284 13.8711 44.3704 14.9811 44.0144C16.091 43.6584 17.1056 43.1118 17.9631 42.4078C18.8206 41.7038 19.5034 40.857 19.9698 39.9189C20.4363 38.9807 20.6768 37.9706 20.6768 36.9499C20.6768 35.9292 20.4363 34.9192 19.9698 33.981C19.5034 33.0428 18.8206 32.1961 17.9631 31.4921C17.1056 30.7881 16.091 30.2415 14.9811 29.8855C13.8711 29.5295 12.6888 29.3715 11.5059 29.421H11.4646Z"
+                    fill="#EAEAEA" /> 
+                  <path d="M34.4451 29.424C32.919 29.4276 31.4199 29.7705 30.0925 30.4196C31.961 26.2541 35.0531 22.5785 39.0658 19.7529C39.3169 19.5969 39.5284 19.3982 39.6871 19.1691C39.8459 18.94 39.9485 18.6854 39.9888 18.4208C40.0291 18.1562 40.0061 17.8874 39.9213 17.6308C39.8364 17.3742 39.6916 17.1352 39.4956 16.9286C39.2996 16.7221 39.0567 16.5523 38.7817 16.4296C38.5067 16.307 38.2055 16.2342 37.8967 16.2157C37.5878 16.1971 37.2778 16.2332 36.9858 16.3218C36.6937 16.4104 36.4258 16.5495 36.1985 16.7307C27.9472 22.5084 24.2754 30.5084 24.2754 35.4684C24.2852 37.2023 24.8739 38.8972 25.9713 40.3505C27.0687 41.8038 28.6283 42.9541 30.4638 43.664C31.7048 44.182 33.0663 44.4495 34.4451 44.4462C35.628 44.4958 36.8103 44.3378 37.9203 43.9818C39.0303 43.6258 40.0448 43.0792 40.9023 42.3752C41.7599 41.6712 42.4426 40.8244 42.909 39.8863C43.3755 38.9481 43.6161 37.938 43.6161 36.9173C43.6161 35.8966 43.3755 34.8866 42.909 33.9484C42.4426 33.0102 41.7599 32.1635 40.9023 31.4595C40.0448 30.7555 39.0303 30.2089 37.9203 29.8529C36.8103 29.4969 35.628 29.3389 34.4451 29.3884V29.424Z"
+                    fill="#EAEAEA" />
+                </g>
+                <defs><clipPath id="clip0_443_9995"><rect width="61" height="64" fill="white" /></clipPath></defs>
+              </svg>
+            </div>
+            <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+              <div style="align-self: stretch; height: 337px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 36px; display: flex">
+                <div style="align-self: stretch; color: #231F20; font-size: 18px; font-family: Montserrat; font-weight: 400; line-height: 28px; letter-spacing: 0.54px; word-wrap: break-word" [innerHtml]="quote.attributes.Text | markedToHtml"></div>
+                <div style="width: 64px; height: 0px; border: 1px #007041 solid"></div>
+                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: flex">
+                  <div style="height: 24px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                    <div style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                      <div style="width: 421px; color: #616161; font-size: 20px; font-family: Montserrat; font-weight: 500; letter-spacing: 3px; word-wrap: break-word">{{quote.attributes.Title}}</div>
+                    </div>
+                  </div>
+                  <div style="justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+                    <div style="color: #616161; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 19px; letter-spacing: 0.48px; word-wrap: break-word">{{quote.attributes.Description}}</div>
+                  </div>
+                  <div style="justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+                    <div style="color: #616161; font-size: 16px; font-family: Montserrat; font-weight: 400; line-height: 19px; letter-spacing: 0.48px; word-wrap: break-word">{{quote.attributes.Date | date:'longDate'}}</div>
+                    <div >
+                      <a *ngIf="quote?.attributes?.Link" [href]="quote?.attributes?.Link" target="_blank" style="width: 14px; height: 14px; justify-content: center; align-items: center; display: flex;">
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_443_10011)"><path d="M14 0.5V11.875H11.375V14.5H0V3.125H2.625V0.5H14ZM13.125 11V1.375H3.5V3.125H5.25V4H0.875V13.625H10.5V9.25H11.375V11H13.125ZM6.43262 8.68262L5.81738 8.06738L9.87793 4H7V3.125H11.375V7.5H10.5V4.62207L6.43262 8.68262Z" fill="#046F44"/></g>
+                          <defs><clipPath id="clip0_443_10011"><rect width="14" height="14" fill="white" transform="translate(0 0.5)"/></clipPath></defs>
+                        </svg> 
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+
+      <div style="padding-top: 50px;">
+        <span *ngFor="let pageButton of pageButtons">
+          <button routerLink="{{pageButton.attributes.path}}" class="mButton">{{pageButton.attributes.title}} <ion-icon name="arrow-forward-outline"></ion-icon></button>
+        </span>
+      </div>
+      
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

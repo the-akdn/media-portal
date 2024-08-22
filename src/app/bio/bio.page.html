@@ -1,0 +1,23 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+
+  <div style="padding: 50px; max-width: 1200px; margin: auto;">
+
+    <div class="mArticle" *ngIf="homePage()">
+      <img [src]="homePage().photo?.data?.attributes?.url" >
+      <div class="mTitle">{{ homePage().title }}</div>
+      <hr>
+      <div class="mDesc" [innerHtml]="homePage().description | markedToHtml"></div>
+
+      <div style="padding-top: 20px;">
+        <span *ngFor="let pageButton of pageButtons">
+          <button routerLink="{{pageButton.attributes.path}}" class="mButton">{{pageButton.attributes.title}} <ion-icon name="arrow-forward-outline"></ion-icon></button>
+        </span>
+      </div>
+      
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

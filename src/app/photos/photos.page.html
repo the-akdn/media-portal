@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+
+  <div style="padding: 50px; max-width: 1200px; margin: auto;">
+    <div class="mArticle" *ngIf="page()">
+      <div class="mTitle">{{ page().title }}</div>
+      <hr>
+      <div class="mDesc" [innerHtml]="page().description | markedToHtml"></div>
+
+      <div>
+        <div class="input-group">
+          <ion-input label="{{staticText.filterLabel}}" type="search" [(ngModel)]="searchText" inputmode="search" placeholder="{{staticText.searchHerePH}}"></ion-input>
+          <ion-select style="width:150px;" aria-label="searchCountry" interface="popover" [(ngModel)]="searchCountry" placeholder="{{staticText.selectCountry}}">
+            <ion-select-option value="">All Countries</ion-select-option>
+            <ion-select-option *ngFor="let country of countryList" value="{{country.country}}">{{country.country}}</ion-select-option>
+          </ion-select>
+        </div>
+        <!--
+        <div style="text-align: center;">
+          <span *ngFor="let photoBlock of photoBlocks | PhotoFilter: searchCountry:'country' | PhotoFilter: searchText:'search';  let i = index" style="padding: 0 4px;">
+              <img *ngIf="photoBlock.photo"  [src]="photoBlock.photo" style=" margin-top: 4px; height: 200px;" (click)="openModal(i)" >
+          </span>
+        </div>-->    
+
+      <div style="text-align: center;">
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            sizeXs="6" sizeSm="6" size="4" sizeMd="4" sizeLg="4" sizeXl="4" 
+            *ngFor="let photoBlock of photoBlocks | PhotoFilter: searchCountry:'country' | PhotoFilter: searchText:'search';  let i = index">
+            <div><img *ngIf="photoBlock.photo"  [src]="photoBlock.photo" style=" margin-top: 4px; padding: 5px; max-height: 160px;border-radius: 10px;" (click)="openModal(i)" ></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+      <div style="padding-top: 20px;">
+        <span *ngFor="let pageButton of pageButtons">
+          <button routerLink="{{pageButton.attributes.path}}" class="mButton">  {{pageButton.attributes.title}} <ion-icon name="arrow-forward-outline"></ion-icon></button>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

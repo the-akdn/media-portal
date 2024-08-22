@@ -1,0 +1,7 @@
+<ion-app>
+  <ion-item *ngIf="!accessCheck">
+    <ion-input label="Password input" type="password" value="" [(ngModel)]="pwd" (change)="checkPwd()"></ion-input>
+  </ion-item>
+
+  <ion-router-outlet *ngIf="accessCheck"></ion-router-outlet>
+</ion-app>
